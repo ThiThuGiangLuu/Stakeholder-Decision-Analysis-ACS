@@ -1013,7 +1013,7 @@ acis_costbenefit <- function(x, varnames){
              vv(carbon_price,var_CV_high,5)*
              rate_fer_pla_i4*effective_rate/exchange_rate
     
-  # Total benefit intervention 1 (Provincial People's Committee)####
+  # 4. Total benefit intervention 1 (Provincial People's Committee)####
   
   total_benefiti1<-total_rice_i1+buffalo_benefiti1+cow_benefiti1+env_benefiti1+
   gender_benefiti1+health_impacti1+GHG_impactsi1
@@ -1022,21 +1022,21 @@ acis_costbenefit <- function(x, varnames){
   
   bottomline_benefiti1=total_benefiti1-total_cost_i1
   
-  # Benefits aggregated for stakeholders####
+  # 4.1 Benefits aggregated for stakeholders####
   
-  # Benefits for Hydro-Met Station
+  # 4.1.1 Benefits for Hydro-Met Station####
   hydromet_benefit_i1<-cost_new_met_station+cost_forecast_province
   
-  # Benefits for Provincial Department of Agriculture and Rural Development
+  # 4.1.2 Benefits for Provincial Department of Agriculture and Rural Development####
   pdard_benefit_i1<-cost_translation
   
-  # Benefits for Agricultural Service Centre
+  # 4.1.3 Benefits for Agricultural Service Centre####
   asc_benefit_i1<-cost_capacity_communication+cost_model+ME_cost
   
-  # Benefits for SMS service providers
+  # 4.1.4 Benefits for SMS service providers####
   SMS_provider_benefit_i1<-cost_rice_SMS+cost_animal_SMS
   
-  # Benefits for seed suppliers
+  # 4.1.5 Benefits for seed suppliers####
   
   seed_supplier_benefit_i1<- 0-(benefit_dose_seed_i1+
     (benefit_time_seed_i1)*(1-inaccurate_forecast_i1)-
@@ -1044,89 +1044,94 @@ acis_costbenefit <- function(x, varnames){
     benefit_time_spray_i1)
    
   
-  # Benefits for fertilizer suppliers
+  # 4.1.6 Benefits for fertilizer suppliers####
   
   fertilizer_supplier_benefit_i1<- 0-(benefit_dose_fer_i1+
     (benefit_time_fer_i1)*(1-inaccurate_forecast_i1)-
     (benefit_time_fer_i1)*inaccurate_forecast_i1)
   
-  # Benefits for plant protection suppliers
+  # 4.1.7 Benefits for plant protection suppliers####
   plant_protection_supplier_benefit_i1<- 0-(benefit_time_spray_i1)
   
-  # Benefit for women's union/LNGO
+  # 4.1.8 Benefit for women's union/LNGO####
   wu_ngo_benefit_i1<-cost_gender
   
-  # Benefits for rice farmers
+  # 4.1.9 Benefits for rice farmers####
   rice_fa_benefit_i1<-total_rice_i1+(water_benefiti1*total_farm_households_i1234/total_households_i1234)+
     gender_benefiti1+health_impacti1
-  # Average benefits for one rice household
+  # 4.1.9.1 Average benefits for one rice household####
   one_rice_HH1<-rice_fa_benefit_i1/total_farm_households_i1234
   
-  #Benefits for animal husbandry farmers
+  #4.1.10 Benefits for animal husbandry farmers####
   
   animal_fa_benefiti1<-buffalo_benefiti1+cow_benefiti1
   
-  #Benefits for fish farmers
+  # 4.1.10.1 Average benefits for one animal husbandry household####
+  one_annimal_HH1<-animal_fa_benefiti1/(percent_animal_households_i1234*total_farm_households_i1234)
+  
+  #4.1.11 Benefits for fish farmers####
   fi_fa_benefit_i1<-fish_benefiti1
   
-  # Benefits for public
+  # 4.1.12 Benefits for public####
   
   public_benefit_i1<-water_benefiti1*
-    (total_households_i1234-total_farm_households_i1234)/total_households_i1234+
-    GHG_impactsi1
+    (total_households_i1234-total_farm_households_i1234)/total_households_i1234
   
   # NPV intervention 1 for stakeholders####
-  # NPV of overall intervention- Provincial People's Committee
+  # 4.2 NPV of overall intervention- Provincial People's Committee####
   NPV1<-discount(bottomline_benefiti1, discount_rate, calculate_NPV = TRUE)
-  # NPV for Provincial Hydro-met Station
+  # 4.2.1 NPV for Provincial Hydro-met Station####
   NPV_Hydromet1<-discount(hydromet_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for Provincial Department of Agriculture and Rural Development
+  #4.2.2 NPV for Provincial Department of Agriculture and Rural Development####
   NPV_DARD1<-discount(pdard_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for Agricultural Service Centre
+  #4.2.3 NPV for Agricultural Service Centre####
   NPV_ASC1<-discount(asc_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for SMS service providers
+  #4.2.4 NPV for SMS service providers####
   NPV_SMSP1<-discount(SMS_provider_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for seed suppliers
+  #4.2.5 NPV for seed suppliers####
   NPV_SS1<-discount(seed_supplier_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for fertilizer suppliers
+  #4.2.6 NPV for fertilizer suppliers####
   NPV_FS1<-discount(fertilizer_supplier_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for plant protection suppliers
+  #4.2.7 NPV for plant protection suppliers ####
   NPV_PPS1<-discount(plant_protection_supplier_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #Benefit for women's union/Local NGO
+  #4.2.8 Benefit for women's union/Local NGO####
   NPV_WU_NGO1<-discount(wu_ngo_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for rice farmers
+  #4.2.9 NPV for rice farmers####
   NPV_Rice1<-discount(rice_fa_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for animal husbandry farmers
+  #4.2.10 NPV for animal husbandry farmers####
   NPV_AH1<-discount(animal_fa_benefiti1, discount_rate, calculate_NPV = TRUE)
-  #NPV for fish farmers
+  #4.2.11 NPV for fish farmers####
   NPV_Fish1<-discount(fi_fa_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #NPV for the public
+  #4.2.12 NPV for the public####
   NPV_Public1<-discount(public_benefit_i1, discount_rate, calculate_NPV = TRUE)
-  #Average NPV for one rice household
+  #4.2.9.1 Average NPV for one rice household####
   NPV_One_RiceHH1<-discount(one_rice_HH1, discount_rate, calculate_NPV = TRUE)
+  #4.2.10.1 Average NPV for one animal raising household####
+  NPV_One_AnimalHH1<-discount(one_annimal_HH1, discount_rate, calculate_NPV = TRUE)
+  
  
-  # Total benefit intervention 2 (Provincial People's Committee####
+  #5. Total benefit intervention 2 (Provincial People's Committee####
   total_benefiti2<-total_rice_i2+buffalo_benefiti2+cow_benefiti2+env_benefiti2+
   gender_benefiti2+health_impacti2+GHG_impactsi2
   
   # Annual bottom-line benefit intervention 2
   bottomline_benefiti2=total_benefiti2-total_cost_i2
   
-  # Benefits aggregated for stakeholders####
+  # 5.1 Benefits aggregated for stakeholders####
   
-  # Benefits for Hydro-Met Station
+  #5.1.1 Benefits for Hydro-Met Station####
   hydromet_benefit_i2<-cost_forecast_province
   
-  # Benefits for Provincial Department of Agriculture and Rural Development
+  # 5.1.2 Benefits for Provincial Department of Agriculture and Rural Development####
   pdard_benefit_i2<-cost_translation
   
-  # Benefits for Agricultural Service Centre
+  # 5.1.3 Benefits for Agricultural Service Centre####
   asc_benefit_i2<-cost_capacity_communication+cost_model+ME_cost
   
-  # Benefits for SMS service providers
+  # 5.1.4 Benefits for SMS service providers####
   SMS_provider_benefit_i2<-cost_rice_SMS+cost_animal_SMS
   
-  # Benefits for seed suppliers
+  # 5.1.5 Benefits for seed suppliers ####
   
   seed_supplier_benefit_i2<- 0-(benefit_dose_seed_i2+
                                   (benefit_time_seed_i2)*(1-inaccurate_forecast_i234)-
@@ -1134,89 +1139,94 @@ acis_costbenefit <- function(x, varnames){
                                   benefit_time_spray_i2)
   
   
-  # Benefits for fertilizer suppliers
+  # 5.1.6 Benefits for fertilizer suppliers####
   
   fertilizer_supplier_benefit_i2<- 0-(benefit_dose_fer_i2+
                                         (benefit_time_fer_i2)*(1-inaccurate_forecast_i234)-
                                         (benefit_time_fer_i2)*inaccurate_forecast_i234)
   
-  # Benefits for plant protection suppliers
+  # 5.1.7 Benefits for plant protection suppliers####
   plant_protection_supplier_benefit_i2<- 0-(benefit_time_spray_i2)
-  # Benefits for women's union/LNGO
+  
+  # 5.1.8 Benefits for women's union/LNGO####
   wu_ngo_benefit_i2<-cost_gender
   
-  # Benefits for rice farmers
+  # 5.1.9 Benefits for rice farmers####
   rice_fa_benefit_i2<-total_rice_i2+(water_benefiti2*total_farm_households_i1234/total_households_i1234)+
     gender_benefiti2+health_impacti2
   
-  # Average benefits for one rice household
+  # 5.1.9.1 Average benefits for one rice household####
   one_rice_HH2<-rice_fa_benefit_i2/total_farm_households_i1234
   
-  #Benefits for animal husbandry farmers
+  #5.1.10 Benefits for animal husbandry farmers####
   
   animal_fa_benefiti2<-buffalo_benefiti2+cow_benefiti2
   
-  # Benefits for fish farmers
+  #5.1.10.1 Average benefits for one animal husbandry household####
+  one_annimal_HH2<-animal_fa_benefiti2/(percent_animal_households_i1234*total_farm_households_i1234)
+  
+  #5.1.11 Benefits for fish farmers####
   fi_fa_benefit_i2<-fish_benefiti2
   
-  # Benefits for the public
+  #5.1.12 Benefits for the public####
   
   public_benefit_i2<-water_benefiti2*
-    (total_households_i1234-total_farm_households_i1234)/total_households_i1234+
-    GHG_impactsi2
+    (total_households_i1234-total_farm_households_i1234)/total_households_i1234
     
   # NPV intervention 2 for stakeholders####
-  #NPV of overall intervention- Provincial People's Committee
+  #5.2 NPV of overall intervention- Provincial People's Committee####
   NPV2<-discount(bottomline_benefiti2, discount_rate, calculate_NPV = TRUE)
-  #NPV for Hydro-Met Station
+  #5.2.1 NPV for Hydro-Met Station####
   NPV_Hydromet2<-discount(hydromet_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for Provincial Department of Agriculture and Rural Development
+  #5.2.2 NPV for Provincial Department of Agriculture and Rural Development####
   NPV_DARD2<-discount(pdard_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for Agricultural Service Centre
+  #5.2.3 NPV for Agricultural Service Centre####
   NPV_ASC2<-discount(asc_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for SMS service providers
+  #5.2.4 NPV for SMS service providers####
   NPV_SMSP2<-discount(SMS_provider_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for seed suppliers
+  #5.2.5 NPV for seed suppliers####
   NPV_SS2<-discount(seed_supplier_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for fertilizer suppliers
+  #5.2.6 NPV for fertilizer suppliers####
   NPV_FS2<-discount(fertilizer_supplier_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for plant protection suppliers
+  #5.2.7 NPV for plant protection suppliers####
   NPV_PPS2<-discount(plant_protection_supplier_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for women's union/Local NGO
+  #5.2.8 NPV for women's union/Local NGO####
   NPV_WU_NGO2<-discount(wu_ngo_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for rice farmers
+  #5.2.9 NPV for rice farmers####
   NPV_Rice2<-discount(rice_fa_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for animal husbandry farmers
+  #5.2.10 NPV for animal husbandry farmers####
   NPV_AH2<-discount(animal_fa_benefiti2, discount_rate, calculate_NPV = TRUE)
-  #NPV for fish farmers
+  #5.2.11 NPV for fish farmers####
   NPV_Fish2<-discount(fi_fa_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #NPV for the public
+  #5.2.12 NPV for the public####
   NPV_Public2<-discount(public_benefit_i2, discount_rate, calculate_NPV = TRUE)
-  #Average NPV for one rice household
+  #5.2.9.1 Average NPV for one rice household####
   NPV_One_RiceHH2<-discount(one_rice_HH2, discount_rate, calculate_NPV = TRUE)
+  #5.2.10.1 Average NPV for one animal raising household####
+  NPV_One_AnimalHH2<-discount(one_annimal_HH2, discount_rate, calculate_NPV = TRUE)
 
-  # Total benefits intervention 3
+  # 6. Total benefits intervention 3####
   total_benefiti3<-total_rice_i3+buffalo_benefiti3+cow_benefiti3+env_benefiti3+
   +gender_benefiti3+health_impacti3+GHG_impactsi3
   
   # Annual bottom-line benefit intervention 3
   bottomline_benefiti3=total_benefiti3-total_cost_i3
   
-  # Benefits aggregated for stakeholders####
+  # 6.1 Benefits aggregated for stakeholders####
   
-  # Benefits for Hydro-Met Station
+  # 6.1.1 Benefits for Hydro-Met Station####
   hydromet_benefit_i3<-cost_forecast_province
   
-  # Benefits for Provincial Provincial Department of Agriculture and Rural Development
+  # 6.1.2 Benefits for Provincial Provincial Department of Agriculture and Rural Development####
   pdard_benefit_i3<-cost_translation
   
-  # Benefits for Agricultural Service Centre
+  # 6.1.3 Benefits for Agricultural Service Centre####
   asc_benefit_i3<-cost_capacity_communication+cost_model+ME_cost
   
-  # Benefits for SMS service providers
+  # 6.1.4 Benefits for SMS service providers####
   SMS_provider_benefit_i3<-cost_SMS_villageleader
   
-  # Benefits for seed suppliers
+  # 6.1.5 Benefits for seed suppliers####
   
   seed_supplier_benefit_i3<- 0-(benefit_dose_seed_i3+
                                   (benefit_time_seed_i3)*(1-inaccurate_forecast_i234)-
@@ -1224,95 +1234,98 @@ acis_costbenefit <- function(x, varnames){
                                   benefit_time_spray_i3)
   
   
-  # Benefits for fertilizer suppliers
+  # 6.1.6 Benefits for fertilizer suppliers####
   
   fertilizer_supplier_benefit_i3<- 0-(benefit_dose_fer_i3+
                                         (benefit_time_fer_i3)*(1-inaccurate_forecast_i234)-
                                         (benefit_time_fer_i3)*inaccurate_forecast_i234)
   
-  # Benefits for plant protection suppliers
+  # 6.1.7 Benefits for plant protection suppliers####
   plant_protection_supplier_benefit_i3<- 0-(benefit_time_spray_i3)
   
-  # Benefits for village leaders
+  # 6.1.8 Benefits for village leaders####
   village_leader_benefit_i3<-cost_allowance_village_leader
   
-  # Benefits for women's union/LNGO
+  # 6.1.9 Benefits for women's union/LNGO####
   wu_ngo_benefit_i3<-0
   
-  # Benefits for rice farmers
+  # 6.1.10 Benefits for rice farmers####
   rice_fa_benefit_i3<-total_rice_i3+(water_benefiti3*total_farm_households_i1234/total_households_i1234)+
     gender_benefiti3+health_impacti3
   
-  # Average benefits for one rice household
+  # 6.1.10.1 Average benefits for one rice household####
   one_rice_HH3<-rice_fa_benefit_i3/total_farm_households_i1234
   
-  #Benefits for animal husbandry farmers
+  #6.1.11 Benefits for animal husbandry farmers####
   
   animal_fa_benefiti3<-buffalo_benefiti3+cow_benefiti3
+  # 6.1.11.1 Average benefits for one animal husbandry household####
+  one_annimal_HH3<-animal_fa_benefiti3/(percent_animal_households_i1234*total_farm_households_i1234)
   
-  # Benefits for fish farmers
+  # 6.1.12 Benefits for fish farmers####
   fi_fa_benefit_i3<-fish_benefiti3
   
-  # Benefits for the public
+  # 6.1.13 Benefits for the public####
   
   public_benefit_i3<-water_benefiti3*
-    (total_households_i1234-total_farm_households_i1234)/total_households_i1234+
-    GHG_impactsi3
+    (total_households_i1234-total_farm_households_i1234)/total_households_i1234
   
   # NPV intervention 3####
-  #NPV of overall intervention- Provincial People's Committee
+  #6.2 NPV of overall intervention- Provincial People's Committee####
   NPV3<-discount(bottomline_benefiti3, discount_rate, calculate_NPV = TRUE)
-  #NPV for Hydro-Met Station
+  #6.2.1 NPV for Hydro-Met Station####
   NPV_Hydromet3<-discount(hydromet_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for Provincial Department of Agriculture and Rural Development
+  #6.2.2 NPV for Provincial Department of Agriculture and Rural Development####
   NPV_DARD3<-discount(pdard_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for Agricultural Service Centre
+  #6.2.3 NPV for Agricultural Service Centre####
   NPV_ASC3<-discount(asc_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for SMS service providers
+  #6.2.4 NPV for SMS service providers####
   NPV_SMSP3<-discount(SMS_provider_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for seed suppliers
+  #6.2.5 NPV for seed suppliers####
   NPV_SS3<-discount(seed_supplier_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for fertilizer suppliers
+  #6.2.6 NPV for fertilizer suppliers####
   NPV_FS3<-discount(fertilizer_supplier_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for plant protection suppliers
+  #6.2.7NPV for plant protection suppliers####
   NPV_PPS3<-discount(plant_protection_supplier_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for village leaders
+  #6.2.8NPV for village leaders####
   NPV_VL3<-discount(village_leader_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for women's union/Local NGO
+  #6.2.9NPV for women's union/Local NGO####
   NPV_WU_NGO3<-discount(wu_ngo_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for rice farmers
+  #6.2.10 NPV for rice farmers####
   NPV_Rice3<-discount(rice_fa_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for animal husbandry farmers
+  #6.2.11 NPV for animal husbandry farmers####
   NPV_AH3<-discount(animal_fa_benefiti3, discount_rate, calculate_NPV = TRUE)
-  #NPV for fish farmers
+  #6.2.12 NPV for fish farmers####
   NPV_Fish3<-discount(fi_fa_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #NPV for the public
+  #6.2.13 NPV for the public####
   NPV_Public3<-discount(public_benefit_i3, discount_rate, calculate_NPV = TRUE)
-  #Average NPV for one rice household
+  #6.2.10.1 Average NPV for one rice household####
   NPV_One_RiceHH3<-discount(one_rice_HH3, discount_rate, calculate_NPV = TRUE)
+  #6.2.10.2 Average NPV for one animal raising household####
+  NPV_One_AnimalHH3<-discount(one_annimal_HH3, discount_rate, calculate_NPV = TRUE)
     
-  # Total benefits intervention 4####
+  # 7. Total benefits intervention 4####
   total_benefiti4<-total_rice_i4+buffalo_benefiti4+cow_benefiti4+env_benefiti4+
   gender_benefiti4+health_impacti4+GHG_impactsi4
   
   # Annual bottom-line benefit intervention 4
   bottomline_benefiti4=total_benefiti4-total_cost_i4
     
-  # Benefits aggregated for stakeholders####
+  # 7.1 Benefits aggregated for stakeholders####
   
-  # Benefits for Hydro-Met Station
+  # 7.1.1 Benefits for Hydro-Met Station####
   hydromet_benefit_i4<-cost_forecast_province
   
-  # Benefits for Provincial Department of Agriculture and Rural Development
+  # 7.1.2 Benefits for Provincial Department of Agriculture and Rural Development####
   pdard_benefit_i4<-cost_translation
   
-  # Benefits for Agricultural Service Centre
+  # 7.1.3 Benefits for Agricultural Service Centre####
   asc_benefit_i4<-cost_capacity_communication+cost_model+ME_cost
   
-  # Benefits for SMS service providers
+  # 7.1.4 Benefits for SMS service providers####
   SMS_provider_benefit_i4<-0
   
-  # Benefits for seed suppliers
+  # 7.1.5 Benefits for seed suppliers####
   
   seed_supplier_benefit_i4<- 0-(benefit_dose_seed_i4+
                                   (benefit_time_seed_i4)*(1-inaccurate_forecast_i234)-
@@ -1320,71 +1333,74 @@ acis_costbenefit <- function(x, varnames){
                                   benefit_time_spray_i4)
   
   
-  # Benefits for fertilizer suppliers
+  # 7.1.6 Benefits for fertilizer suppliers####
   
   fertilizer_supplier_benefit_i4<- 0-(benefit_dose_fer_i4+
                                         (benefit_time_fer_i4)*(1-inaccurate_forecast_i234)-
                                         (benefit_time_fer_i4)*inaccurate_forecast_i234)
   
-  # Benefits for plant protection suppliers
+  # 7.1.7 Benefits for plant protection suppliers####
   plant_protection_supplier_benefit_i4<- 0-(benefit_time_spray_i4)
   
-  # Benefits for village leaders
+  # 7.1.8 Benefits for village leaders####
   village_leader_benefit_i4<-cost_collect_bulletin+cost_allowance_village_leader
-  # Benefits for women's union/LNGO
+  # 7.1.9 Benefits for women's union/LNGO####
   wu_ngo_benefit_i4<-0
   
-  # Benefits for rice farmers
+  # 7.1.10 Benefits for rice farmers####
   rice_fa_benefit_i4<-total_rice_i4+(water_benefiti4*total_farm_households_i1234/total_households_i1234)+
     gender_benefiti4+health_impacti4
   
-  # Average for one rice household
+  # 7.1.10.1 Average for one rice household####
   one_rice_HH4<-rice_fa_benefit_i4/total_farm_households_i1234
   
-  #Benefits for animal husbandry farmers
+  #7.1.11 Benefits for animal husbandry farmers####
   
   animal_fa_benefiti4<-buffalo_benefiti4+cow_benefiti4
+  #7.11.1 Average benefits for one animal husbandry household####
+  one_annimal_HH4<-animal_fa_benefiti4/(percent_animal_households_i1234*total_farm_households_i1234)
   
-  # Benefits for fish farmers
+  #7.1.12 Benefits for fish farmers####
   fi_fa_benefit_i4<-fish_benefiti4
   
-  # Benefits for the public
+  #7.1.13 Benefits for the public####
   
   public_benefit_i4<-water_benefiti4*
-    (total_households_i1234-total_farm_households_i1234)/total_households_i1234+
-    GHG_impactsi4
+    (total_households_i1234-total_farm_households_i1234)/total_households_i1234
   
   # NPV intervention 4####
-  #NPV of overall intervention- Provincial People's Committee
+  #7.2 NPV of overall intervention- Provincial People's Committee
   NPV4<-discount(bottomline_benefiti4, discount_rate, calculate_NPV = TRUE)
-  #NPV for Hydro-Met Station
+  #7.2.1 NPV for Hydro-Met Station
   NPV_Hydromet4<-discount(hydromet_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for Provincial Department of Agriculture and Rural Development
+  #7.2.2 NPV for Provincial Department of Agriculture and Rural Development
   NPV_DARD4<-discount(pdard_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for Agricultural Service Centre
+  #7.2.3 NPV for Agricultural Service Centre
   NPV_ASC4<-discount(asc_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for SMS service providers
+  #7.2.4 NPV for SMS service providers
   NPV_SMSP4<-discount(SMS_provider_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for seed suppliers
+  #7.2.5 NPV for seed suppliers
   NPV_SS4<-discount(seed_supplier_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for fertilizer suppliers
+  #7.2.6 NPV for fertilizer suppliers
   NPV_FS4<-discount(fertilizer_supplier_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for plant protection suppliers
+  #7.2.7 NPV for plant protection suppliers
   NPV_PPS4<-discount(plant_protection_supplier_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for village leaders
+  #7.2.8 NPV for village leaders
   NPV_VL4<-discount(village_leader_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for women's union/Local NGO
+  #7.2.9 NPV for women's union/Local NGO
   NPV_WU_NGO4<-discount(wu_ngo_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for rice farmers
+  #7.2.10 NPV for rice farmers
   NPV_Rice4<-discount(rice_fa_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for animal husbandry farmers
+  #7.2.11 NPV for animal husbandry farmers
   NPV_AH4<-discount(animal_fa_benefiti4, discount_rate, calculate_NPV = TRUE)
-  #NPV for fish farmers
+  #7.2.12 NPV for fish farmers
   NPV_Fish4<-discount(fi_fa_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #NPV for the public
+  #7.2.13 NPV for the public
   NPV_Public4<-discount(public_benefit_i4, discount_rate, calculate_NPV = TRUE)
-  #Average NPV for one rice household
+  #7.2.10.1 Average NPV for one rice household
   NPV_One_RiceHH4<-discount(one_rice_HH4, discount_rate, calculate_NPV = TRUE)
+  #7.2.11.1 Average NPV for one animal raising household
+  NPV_One_AnimalHH4<-discount(one_annimal_HH4, discount_rate, calculate_NPV = TRUE)
  
   return(list(
           NPV_Intervention1=NPV1,
@@ -1401,6 +1417,7 @@ acis_costbenefit <- function(x, varnames){
           NPV_Fish_Intervention1=NPV_Fish1,
           NPV_Public_Intervention1=NPV_Public1,
           NPV_One_RiceHH_Intervention1=NPV_One_RiceHH1,
+          NPV_One_AnimalHH_Intervention1=NPV_One_AnimalHH1,
           NPV_Intervention2=NPV2,
           NPV_Hydromet_Intervention2=NPV_Hydromet2,
           NPV_DARD_Intervention2=NPV_DARD2,
@@ -1415,6 +1432,7 @@ acis_costbenefit <- function(x, varnames){
           NPV_Fish_Intervention2=NPV_Fish2,
           NPV_Public_Intervention2=NPV_Public2,
           NPV_One_RiceHH_Intervention2=NPV_One_RiceHH2,
+          NPV_One_AnimalHH_Intervention2=NPV_One_AnimalHH2,
           NPV_Intervention3=NPV3,
           NPV_Hydromet_Intervention3=NPV_Hydromet3,
           NPV_DARD_Intervention3=NPV_DARD3,
@@ -1430,6 +1448,7 @@ acis_costbenefit <- function(x, varnames){
           NPV_AH_Intervention3=NPV_AH3,
           NPV_Public_Intervention3=NPV_Public3,
           NPV_One_RiceHH_Intervention3=NPV_One_RiceHH3,
+          NPV_One_AnimalHH_Intervention3=NPV_One_AnimalHH3,
           NPV_Intervention4=NPV4,
           NPV_Hydromet_Intervention4=NPV_Hydromet4,
           NPV_DARD_Intervention4=NPV_DARD4,
@@ -1444,26 +1463,31 @@ acis_costbenefit <- function(x, varnames){
           NPV_AH_Intervention4=NPV_AH4,
           NPV_Fish_Intervention4=NPV_Fish4,
           NPV_Public_Intervention4=NPV_Public4,
-          NPV_One_RiceHH_Intervention4=NPV_One_RiceHH4
+          NPV_One_RiceHH_Intervention4=NPV_One_RiceHH4,
+          NPV_One_AnimalHH_Intervention4=NPV_One_AnimalHH4
           ))
   }
   
-  # Running the model ####
-  #decisionSupport::decisionSupport("acis_inputs_EN.csv",
-  #outputPath = paste("MCResults",sep=""),
-  #welfareFunction = acis_costbenefit,
-  #numberOfModelRuns = 1e4, #run 10,000 times
-  #functionSyntax = "plainNames")
-  
+  #Running the model ####
+  decisionSupport::decisionSupport("acis_inputs_EN.csv",
+  outputPath = paste("MCResults",sep=""),
+  welfareFunction = acis_costbenefit,
+  numberOfModelRuns = 1e4, #run 10,000 times
+  functionSyntax = "plainNames")
+  # the function might return error when plotting. It might probably due to some NPV returns of 0
+  # and therefore, it is not possible to run PLS
   # Another option to run the model with handy results (not many folders but only 
   #the input and output variable simulations)
   #https://cran.r-project.org/web/packages/decisionSupport/vignettes/example_decision_function.html
 
-  mcSimulation_results <- decisionSupport::mcSimulation(
-  estimate = decisionSupport::estimate_read_csv("acis_inputs_EN.csv"),
-  model_function = acis_costbenefit,
-  numberOfModelRuns = 1e4, #run 1,000 times
-  functionSyntax = "plainNames")
+#mcSimulation_results <- decisionSupport::mcSimulation(
+# estimate = decisionSupport::estimate_read_csv("acis_inputs_EN.csv"),
+# model_function = acis_costbenefit,
+# numberOfModelRuns = 1e4, #run 1,000 times
+# functionSyntax = "plainNames")
+# write.csv(mcSimulation_results$x, "MCResults\\x.csv")
+# write.csv(mcSimulation_results$y, "MCResults\\y.csv")
+  
+  
 
-  write.csv(mcSimulation_results$x, file="x.csv")
-  write.csv(mcSimulation_results$y, file="y.csv")
+  
