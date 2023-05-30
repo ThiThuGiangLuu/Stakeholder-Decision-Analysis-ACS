@@ -1,6 +1,6 @@
 # Stakeholder-Analysis-ACIS
 
-[Repository](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS) includes the method, data and supplementary documents for the integration of stakeholder identification, stakeholder analysis and decision analysis approaches. The integrated approach aims to engage stakeholders in generating system knowledge and integrate the scientific evidence into decision-making processes. We demonstrated our approach in a case study in Dien Bien to integrate agro-climate services (ACS) into socio-economic development planning process in Dien Bien 
+[Repository](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS) includes the method, data and supplementary documents for the integration of stakeholder identification, stakeholder analysis and decision analysis approaches. The integrated approach aims to engage stakeholders in generating system knowledge and integrate the scientific evidence into decision-making processes. We demonstrated our approach in a case study to integrate agro-climate services (ACS) into socio-economic development planning process in Dien Bien Province, Vietnam
 
 
 `Supplementary-material.html`describes the process to integrate stakeholder identification, stakeholder analysis and decision analysis approaches. 
