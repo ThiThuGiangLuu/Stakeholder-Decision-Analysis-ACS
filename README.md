@@ -26,7 +26,7 @@ The document also includes the description of the two Supplementary Materials.
 
 `Supplementary Material 1`: Summary of individual Net Present Value results for each stakeholder 
 
-`Supplementary Material 2`: Suggested pathways to integrate ACS in the SEDP, and roles of institutional stakeholders
+`Supplementary Material 2`: Suggested pathways to integrate ACS in the SEDP and roles of institutional stakeholders
 
 
 
