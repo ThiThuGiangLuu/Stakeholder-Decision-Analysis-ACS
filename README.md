@@ -22,7 +22,7 @@ The document also includes the description of the two Supplementary Materials.
 
 `ACS decision analysis.R` is the R code used for the cost-benefit analysis for each stakeholder 
 
-### Supplementary materials
+### Supplementary Materials
 
 `Supplementary Material 1`: Summary of individual Net Present Value results for each stakeholder 
 
