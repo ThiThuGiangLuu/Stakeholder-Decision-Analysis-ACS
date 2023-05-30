@@ -1,0 +1,153 @@
+---
+title: "**Data availability and supplementary materials:** <br /> Stakeholder engagement in agro-climate service planning"
+
+author: Thi Thu Giang Luu^a,@^, Eike Luedeling^a^, Cory Whitney^a,b^ and Lisa Biber-Freudenberger^b^ <br /><small>^a^INRES-Horticultural Sciences, University of Bonn, Auf dem Huegel 6, 53121 Bonn, Germany <br /><small/>^b^Center of Development Research (ZEF), University of Bonn, Genscherallee 3, 53113 Bonn, Germany <br /><small/>^@^Corresponding author's email:luuthithugiang@gmail.com
+
+bibliography: 
+  - Stakeholder-engagement.bib
+
+date: May 26, 2023
+output: 
+  html_document:
+    toc: true
+---
+ 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggrepel)
+library(ggthemes)
+library(cowplot)
+options(knitr.table.format = "html")
+```
+
+# 1. Stakeholder engagement approach in agro-climate service scaling
+
+This document describes the approach to engaging stakeholders in generating systems knowledge and translating that knowledge into decision-making. The approach is the combination of decision analysis, stakeholder identification and analysis approaches. 
+
+We applied our approach in the case of Dien Bien, Vietnam. We generated scientific evidence on agro-climate services (ACS) scaling. We further suggest  how to engage stakeholders in integrating the scientific evidence into the socio-economic development planning in Dien Bien. 
+
+The full procedure for integrating stakeholder engagement and stakeholder analysis with the decision analysis approach is available in the [Repository: Stakeholder-Decision-Analysis-ACS ](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS). 
+
+### 1.1. Knowledge generation and knowledge integration approach
+
+We combined decision analysis, stakeholder identification and stakeholder analysis approaches. The detail methodological steps are described in the Figure below
+
+
+```{r, out.width="90%", fig.align="center", fig.cap="Stakeholder engagement approach in agro-climate service planning. The methodological steps are further developed based on the decision analysis procedure used in the study by [@luu_decision_2022-1].", echo=FALSE}
+knitr::include_graphics('Figures/FIG2.Method.Print_with_color.jpg', dpi=NA)
+```
+
+
+### 1.2. Identification of stakeholders 
+
+We defined a stakeholder as “any individual or group who has an interest in a decision or who can affect or is affected by a decision”. 
+
+This definition, combined with various tools/techniques (see below Figure) helped us to identify the key stakeholders of the decisions to invest in scaling ACS.
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Methods and tools/techniques used to identify stakeholders of the potential decisions to invest in agro-climate services in Dien Bien District, Vietnam. Adapted from [@reed_whos_2009]", echo=FALSE}
+knitr::include_graphics('Figures/FIG3.Stakeholder-identification.jpg', dpi=NA)
+```
+
+[List of targeted stakeholders](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Figures%20for%20Git/Table%201.%20List%20of%20targeted%20stakeholders.docx) contains the list of key stakeholders for potential engagement in knowledge generation and translation, aiming for influencing agro-climate service investment decision-making. 
+
+### 1.4. Identification of experts  
+
+Among those stakeholders, we used another set of criteria (i.e. based on stakeholders' experience, availability, expertise and gender) to identify potential experts who would be joining in generating ACS knowledge. 
+
+For this purpose, we grouped stakeholders based on their time availability and experience into core experts and resource persons. Together with CVN’s technical working group, we evaluated the availability and expertise of each key stakeholder by scoring them on a scale from 0 to 5 for these traits. The score helped to select experts based on the following criteria
+
+-	Core experts: Availability score > 2.5 and experience related to different aspects in ACS scaling > 2.5
+-	Resource persons: Availability score ≤ 2.5 and experience related to different aspects in ACS scaling > 2.5
+
+We considered the gender of stakeholders to support the constitution of a gender-balanced team of experts. Furthermore, we mapped out the expertise (i.e. knowledge and skills related to ACS)  of stakeholders to help us identify experts with representative expertise across the value chain. 
+
+We used the ggplot2 package [@wickham_ggplot2_2022] in R [@r_core_team_r:_2020] to analyze and visualize stakeholders’ attributes.
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Categorization of stakeholders to identify potential core experts and resource persons", echo=FALSE}
+knitr::include_graphics('Figures/FIG3.TIF.Expert.Print_with_color.jpg', dpi=NA)
+```
+
+[Download](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Stakeholder-attributes.R) the R code for expert identification in section `1. Plot stakeholder attributes: experience, availability, gender and expertise to identify experts`
+
+### 1.5. Aggregate cost-benefit analysis for each stakeholder 
+
+We used a dataset collected by [@luu_thithugiangluuacs-decision-analysis_2022] and aggregated cost-benefit for stakeholders who, according to the design, are expected to engage directly or be directly affected by the implementation of ACS
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Categorization of stakeholders to identify potential core experts and resource persons", echo=FALSE}
+knitr::include_graphics('Figures/FIG4.TIF.NPV_Stake_holder.Print_with_color.jpg', dpi=NA)
+```
+
+A summary of individual Net Present Value results for each stakeholder is available in the supporting material [Supplementary Material 1](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Figures%20for%20Git/Supplementary%20material%201.docx).
+
+An input table used for the analysis is available in the supporting document at [Input table for cost-benefit analysis](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/acis_inputs_EN.csv).
+
+Download the [R code for stakeholder cost benefit](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/ACS%20decision%20analysis.R).
+
+### 1.6. Perceived interest, influence, relevance and attitude of stakeholders 
+
+We conducted four three group discussions (FGDs) with the expert team in two years (i.e. 2019 and 2020) to map out the perceived attributes of stakeholders. Those attributes included interest, influence, relevance attitudes. We categorized stakeholders in a four-dimension matrix using the ggplot2 package [@wickham_ggplot2_2022] in R [@r_core_team_r:_2020]. 
+
+Below figure is the result of stakeholder analysis for 2019
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Perceived interest, influence, relevance and attitude of stakeholders n the decision to scale agro-climate services in Dien Bien District, Vietnam. Results were captured through expert consultation in 2019", echo=FALSE}
+knitr::include_graphics('Figures/FIG5.TIF.Stakeholder_analysis_2019.Print_with_color.jpg', dpi=NA)
+```
+
+Below figure is the result of stakeholder analysis for 2020
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Perceived interest, influence, relevance and attitude of stakeholders in the decision to scale agro-climate services in Dien Bien District, Vietnam. Results were captured through expert consultation in 2020", echo=FALSE}
+knitr::include_graphics('Figures/FIG6.TIF.Stakeholder_analysis_2020.Print_with_color.jpg', dpi=NA)
+```
+
+
+We used these analysis to initiate recommendations for engaging these stakeholders in the relevant roles in the ACS budgeting and decision-making processes. 
+
+Download the [R code for stakeholder analysis](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Stakeholder-attributes.R) in `Section 2. Stakeholder power and interest analysis in 2019` and `Section 3. Stakeholder power and interest analysis in 2020`.
+
+### 1.7. Considerations to engage stakeholders 
+
+Experts relied on the identified attributes of stakeholders and integrated such understanding into the administrative and nested budget system to suggest the considerations to engage stakeholders specifically in Dien Bien socio-economic development planning processes.
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Administrative structure and nested budget system in Vietnam. Adapted from [@asian_development_bank_public_2017] and [@strauch_multi-level_2018-1]", echo=FALSE}
+knitr::include_graphics('Figures/FIG1.Admin and finance system.jpg', dpi=NA)
+```
+
+Detailed suggestions for the pathways to engage stakeholders are available in the [Supplementary Material 2](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Figures%20for%20Git/Supplementary%20material%202.docx)
+
+```{r, out.width="90%", fig.align="center", fig.cap="Figure: Suggestions for the pathways to engage stakeholders", echo=FALSE}
+knitr::include_graphics('Figures/Supplementary Material 2.jpg', dpi=NA)
+```
+
+
+### 1.8. Stakeholder input table
+The input table `stakeholder.csv` contains the the variables used in the stakeholder analysis. The table includes the names and other attributes of stakeholders. Download the [stakeholder input table ](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/stakeholder.csv). 
+
+# 2. Supplementary Materials
+
+[Supplementary Material 1](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Figures%20for%20Git/Supplementary%20material%201.docx): Summary of individual Net Present Value results for each stakeholder 
+
+[Supplementary Material 2](https://github.com/ThiThuGiangLuu/Stakeholder-Decision-Analysis-ACS/blob/master/Figures%20for%20Git/Supplementary%20material%202.docx): Suggested pathways to integrate ACS in the SEDP and roles of institutional stakeholders
+
+# 3. Acknowledgements
+
+We acknowledge the valuable support from CARE in Vietnam and Dien Bien Centre of Community Development. We sincerely thank the Schlumberger Foundation for providing a scholarship for the main author through the Faculty for the Future Program. The views expressed in this research are those of the authors and do not necessarily reflect the views of CARE in Vietnam, Dien Bien Centre of Community Development or the Schlumberger Foundation.    
+
+
+
+# 3. References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
